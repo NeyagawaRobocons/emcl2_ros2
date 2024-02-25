@@ -15,7 +15,10 @@ def generate_launch_description():
 
     declare_map_yaml = DeclareLaunchArgument(
         'map',
-        default_value='',
+        default_value=[
+            TextSubstitution(text=os.path.join(
+                get_package_share_directory('emcl2'), 'yaml', '')),
+            TextSubstitution(text='map_data.yaml')],
         description='Full path to map yaml file to load')
     declare_use_sim_time = DeclareLaunchArgument(
         'use_sim_time',
